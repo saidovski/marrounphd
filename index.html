@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PhD Roadmap – AI‑enabled Supply‑Chain Resilience</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    /* ------- BASE LAYOUT ------- */
+    :root{
+        --c-bg: #ffffff;
+        --c-primary: #1e3a8a;
+        --c-secondary: #3b82f6;
+        --c-accent: #06b6d4;
+        --c-success: #10b981;
+        --c-text: #1f2937;
+        --c-text-light: #6b7280;
+        --c-border: #e5e7eb;
+        --c-card: #ffffff;
+        --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --gradient-primary: linear-gradient(135deg, var(--c-primary) 0%, var(--c-secondary) 100%);
+        --gradient-accent: linear-gradient(135deg, var(--c-secondary) 0%, var(--c-accent) 100%);
+        font-size: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        background: var(--c-bg);
+        color: var(--c-text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* ------- HEADER SECTION ------- */
+    .header {
+        background: var(--gradient-primary);
+        padding: 3rem 1rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+
+    h1 {
+        position: relative;
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .subtitle {
+        position: relative;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 400;
+    }
+
+    /* ------- INFO SECTION ------- */
+    .info-section {
+        max-width: 900px;
+        margin: -2rem auto 3rem;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .info-card {
+        background: var(--c-card);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--c-border);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .info-card h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: var(--c-primary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .info-card h2::before {
+        content: '';
+        width: 4px;
+        height: 20px;
+        background: var(--gradient-accent);
+        border-radius: 2px;
+    }
+
+    .info-card ol, .info-card ul {
+        margin-left: 1.5rem;
+        space-y: 0.5rem;
+    }
+
+    .info-card li {
+        font-size: 0.95rem;
+        margin: 0.75rem 0;
+        color: var(--c-text);
+        line-height: 1.6;
+    }
+
+    /* ------- PROGRESS SECTION ------- */
+    .progress-wrapper {
+        max-width: 900px;
+        margin: 0 auto 4rem;
+        padding: 0 1rem;
+    }
+
+    .progress-card {
+        background: var(--c-card);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--c-border);
+    }
+
+    .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .progress-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--c-primary);
+    }
+
+    .progress-percent {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--c-success);
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 12px;
+        background: #f3f4f6;
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: var(--gradient-accent);
+        border-radius: 6px;
+        transition: width 0.8s ease;
+        position: relative;
+    }
+
+    .progress-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    /* ------- TIMELINE ------- */
+    .timeline {
+        max-width: 900px;
+        margin: 0 auto 4rem;
+        padding: 0 1rem;
+        position: relative;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--c-accent), var(--c-secondary), var(--c-primary));
+        border-radius: 2px;
+        mask: linear-gradient(to bottom, transparent 0 2rem, #fff 2rem calc(100% - 2rem), transparent calc(100% - 2rem) 100%);
+    }
+
+    /* ------- MILESTONE CARDS ------- */
+    .milestone {
+        width: 45%;
+        position: relative;
+        margin-bottom: 4rem;
+    }
+
+    .milestone:nth-of-type(odd) {
+        left: 0;
+        text-align: right;
+    }
+
+    .milestone:nth-of-type(even) {
+        left: 55%;
+        text-align: left;
+    }
+
+    .milestone-card {
+        background: var(--c-card);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--c-border);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .milestone-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-accent);
+    }
+
+    .milestone-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .milestone.done .milestone-card::before {
+        background: var(--gradient-primary);
+    }
+
+    /* Timeline dots */
+    .milestone::after {
+        content: '';
+        position: absolute;
+        top: 2rem;
+        width: 20px;
+        height: 20px;
+        background: var(--c-card);
+        border: 4px solid var(--c-secondary);
+        border-radius: 50%;
+        box-shadow: var(--shadow-md);
+        z-index: 10;
+    }
+
+    .milestone:nth-of-type(odd)::after {
+        right: -32px;
+    }
+
+    .milestone:nth-of-type(even)::after {
+        left: -32px;
+    }
+
+    .milestone.done::after {
+        background: var(--c-success);
+        border-color: var(--c-success);
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    }
+
+    /* Milestone content */
+    .milestone-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--c-text-light);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .milestone-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--c-primary);
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .milestone-desc {
+        font-size: 1rem;
+        color: var(--c-text);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .milestone-date {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--c-accent);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(6, 182, 212, 0.1);
+        border-radius: 20px;
+    }
+
+    .milestone-date::before {
+        content: '📅';
+        font-size: 0.8rem;
+    }
+
+    /* ------- END BADGE ------- */
+    .timeline-end {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 2rem;
+        position: relative;
+    }
+
+    .end-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        background: var(--gradient-primary);
+        color: white;
+        padding: 1.5rem 3rem;
+        border-radius: 50px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        box-shadow: var(--shadow-lg);
+        transition: all 0.3s ease;
+    }
+
+    .end-badge:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ------- MOBILE RESPONSIVE ------- */
+    @media(max-width: 768px) {
+        h1 {
+            font-size: 1.75rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            padding: 1.5rem;
+        }
+
+        .timeline::before {
+            left: 2rem;
+            transform: none;
+        }
+
+        .milestone,
+        .milestone:nth-of-type(odd),
+        .milestone:nth-of-type(even) {
+            width: 100%;
+            left: 0;
+            text-align: left;
+            margin-left: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .milestone::after {
+            left: -2.5rem !important;
+            right: auto !important;
+        }
+
+        .milestone-card {
+            padding: 1.5rem;
+        }
+
+        .milestone-title {
+            font-size: 1.1rem;
+        }
+    }
+
+    @media(max-width: 480px) {
+        .header {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .info-card {
+            padding: 1.25rem;
+        }
+
+        .milestone {
+            margin-left: 3rem;
+        }
+
+        .milestone::after {
+            left: -2rem !important;
+            width: 16px;
+            height: 16px;
+        }
+
+        .timeline::before {
+            left: 1.5rem;
+        }
+
+        .milestone-card {
+            padding: 1.25rem;
+        }
+
+        .end-badge {
+            padding: 1.25rem 2rem;
+            font-size: 1.1rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <header class="header">
+        <h1>Said Marroun</h1>
+        <p class="subtitle">Research Roadmap • AI‑enabled Supply‑Chain Resilience (PhD)</p>
+    </header>
+
+    <!-- INFO SECTION -->
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <h2>Research Questions</h2>
+                <ol>
+                    <li>RQ1: To what extent do contemporary AI techniques (ML, DL, reinforcement learning) support supply-chain resilience?</li>
+                    <li>RQ2: Which supply-chain entities, data sources and disruption types should be represented in an "AI-Resilience Ontology" to enable data interoperability and risk visibility?</li>
+                    <li>RQ3: How can an enterprise architecture integrate AI pipelines (data ingestion → feature engineering → predictive & prescriptive models) with existing SC information systems (ERP, WMS) to enable real-time adaptive planning?</li>
+                    <li>RQ4: When and how should AI-driven predictive/prescriptive analytics trigger proactive interventions (e.g., rerouting exports, dynamic inventory policies) to mitigate disruptions in Moroccan supply chains?</li>
+                </ol>
+            </div>
+            
+            <div class="info-card">
+                <h2>Publications &amp; Scientific Communications</h2>
+                <ul>
+                    <li>Article 1: Investigating the Viability of Implementing Electric Freight Vehicles in Morocco: Using an Integrated SWOT PESTEL Analysis in Combination With Analytic Hierarchy Process</li>
+                    <li>Article 2: Balancing Cost Efficiency and Resilience in Green Supply Chains: A Bibliometric Analysis</li>
+					<li>Article 3: Eco-innovations and firm economic performance in developing countries: Evidence from Moroccan firms</li>
+					<li>Article 4: Assessing the Contribution of AI Techniques to Supply Chain Resilience: A Systematic Literature Review</li>
+					<li>5 Communications in: Tetouan, Tangier and Ifrane</li>
+                    <!-- Add more as needed -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-wrapper">
+        <div class="progress-card">
+            <div class="progress-header">
+                <span class="progress-label">Research Progress</span>
+                <span class="progress-percent" id="progress-percent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="timeline">
+        <!-- RQ1 -->
+        <div class="milestone done">
+            <div class="milestone-card">
+                <div class="milestone-label">Chap 2 · RQ 1 - Done</div>
+                <div class="milestone-title">State‑of‑the‑Art<br>Systematic Literature Review</div>
+                <p class="milestone-desc">Map AI techniques (ML, DL, RL) to current supply‑chain resilience practices.</p>
+                <div class="milestone-date">Due · 15 Sep 2025</div>
+            </div>
+        </div>
+
+        <!-- RQ2 -->
+        <div class="milestone done">
+            <div class="milestone-card">
+                <div class="milestone-label">Chap 3 · RQ 2 - Done</div>
+                <div class="milestone-title">Ontological Analysis &amp; Design</div>
+                <p class="milestone-desc">Formal AI‑Resilience ontology capturing entities, disruptions and KPIs.</p>
+                <div class="milestone-date">Due · 15 Oct 2025</div>
+            </div>
+        </div>
+
+        <!-- RQ3 -->
+        <div class="milestone">
+            <div class="milestone-card">
+                <div class="milestone-label">Chap 4 · RQ 3</div>
+                <div class="milestone-title">Reference AI Architecture</div>
+                <p class="milestone-desc">Enterprise‑architecture modelling, data pipelines &amp; micro‑service interfaces.</p>
+                <div class="milestone-date">Due · 01 Mar 2026</div>
+            </div>
+        </div>
+
+        <!-- RQ4 -->
+        <div class="milestone">
+            <div class="milestone-card">
+                <div class="milestone-label">Chap 5 · RQ 4</div>
+                <div class="milestone-title">Simulation + ML Interventions</div>
+                <p class="milestone-desc">Discrete‑event simulation &amp; RL/Regression models for proactive routing.</p>
+                <div class="milestone-date">Due · 01 Sep 2026</div>
+            </div>
+        </div>
+
+        <!-- Evaluation -->
+        <div class="milestone">
+            <div class="milestone-card">
+                <div class="milestone-label">WP‑5</div>
+                <div class="milestone-title">Expert Evaluation</div>
+                <p class="milestone-desc">Stakeholder panels validate resilience gains &amp; architecture usability.</p>
+                <div class="milestone-date">Oct – Nov 2026</div>
+            </div>
+        </div>
+
+        <!-- Communication -->
+        <div class="milestone">
+            <div class="milestone-card">
+                <div class="milestone-label">WP‑6</div>
+                <div class="milestone-title">Publication &amp; Outreach</div>
+                <p class="milestone-desc">Journal submissions, policy brief, open‑source release.</p>
+                <div class="milestone-date">Dec 2026</div>
+            </div>
+        </div>
+
+        <!-- Defence -->
+        <div class="timeline-end">
+            <div class="end-badge">
+                🎓 PhD Defense · Q1 2027
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function(){
+            const milestones = document.querySelectorAll('.milestone');
+            const done = document.querySelectorAll('.milestone.done');
+            const progressFill = document.getElementById('progress-fill');
+            const progressPercent = document.getElementById('progress-percent');
+            
+            const percentage = Math.round((done.length / milestones.length) * 100);
+            
+            // Animate progress bar
+            setTimeout(() => {
+                progressFill.style.width = percentage + '%';
+                progressPercent.textContent = percentage + '%';
+            }, 500);
+        })();
+    </script>
+</body>
+</html>
